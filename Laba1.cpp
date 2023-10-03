@@ -38,7 +38,7 @@ int main() {
 	std::cout << " \nВведите четырехзначное число: ";
 	std::cin >> chislo3;
 	border2 = 10000; //внешняя граница
-	border3 = 100; //внутренная граница
+	border3 = 1000; //внутренная граница
 	chislo3 = sqrt(chislo3 * chislo3);
 	if ((chislo3 >= border3) and (chislo3 < border2))  {
 		std::list<int> listNumss;
