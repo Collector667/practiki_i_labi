@@ -27,24 +27,26 @@ int main() {
 		chetvert += 3 - 2 * chetvert;
 	}
 
-	cout << chetvert;
+	
 
 	switch (chetvert) {
-	case (0):
+	case 0:
 		if ((coorX == 0) or (coorY == 0)) {
 			cout << "Точка находится на границе";
 		}
 		else {
 			cout << "Точка находится на заштрихованной области";
-		}
-	case (1):
+		} 
+		break;
+	case 1:
 		if (((coorX == 0) or (coorY == 0)) and (radius >= radiusVec)) {
 			cout << "Точка находится на границе";
 		}
 		else {
 			cout << "Точка вне области";
 		}
-	case (2):
+		break;
+	case 2:
 		if ((radius == radiusVec) or (coorX == 0) or (coorY == 0)) {
 			cout << "Точка на границе ";
 		}
@@ -54,7 +56,8 @@ int main() {
 		else {
 			cout << "Точка вне области";
 		}
-	case (3):
+		break;
+	default:
 		if ((radius == radiusVec) or (coorX == 0) or (coorY == 0)) {
 			cout << "Точка на границе";
 		}
@@ -64,8 +67,9 @@ int main() {
 		else {
 			cout << "Точка вне области";
 		}
-		}
-
+		break;
+	}
+	
 		return 0;
 
 
