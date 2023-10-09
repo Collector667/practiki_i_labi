@@ -20,24 +20,34 @@ int fibonach(int lenNum) {
 	else {
 		return (fibonach(lenNum - 1) + fibonach(lenNum - 2));
 	}
+}
+int fibon(int lenNum) {
+	if (lenNum < 0) {
+		return 0;
+
 	}
-	
+	else {
+		return (pow(((1 + sqrt(5)) / 2), lenNum) / sqrt(5));
+	}
+}
 
 int main() {
 	using namespace std;
 	int lenNum, chislo1;
-	int chisloFib =0;
+	int chisloFib = 0;
 	const int ten = 10;
 	int dva = 2;
 	int tri = 3;
 	setlocale(LC_ALL, "RU");
-	cout << "Ââåäèòå äëèíó ïîñëåäîâàòåëüíîñòè ôèáîíà÷÷è: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð»Ð¸Ð½Ñƒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸ Ñ„Ð¸Ð±Ð¾Ð½Ð°Ñ‡Ñ‡Ð¸: ";
 	cin >> lenNum;
 	std::list<int> listFib;
 	std::list<int> listChet;
 	std::list<int> listTri;
+	std::list<int> listFib2;
 	for (int j = 0; j <= lenNum; j++) {
 		listFib.push_back(fibonach(j));
+		listFib2.push_back(fibon(j));
 	}
 	for (int i : listFib) {
 		if (i % dva == 0) {
@@ -46,23 +56,34 @@ int main() {
 	}
 	for (int i : listFib) {
 		chislo1 = i;
-		
+
 		bool triNum = 0;
-		while (chislo1 > tri-1) {
+		while (chislo1 > tri - 1) {
 			if (chislo1 % ten == tri) {
 				triNum = 1;
 				listTri.push_back(i);
 				break;
 			}
 			chislo1 = chislo1 / ten;
-		}	
+		}
 	}
-	int proiz =1;
+	int proiz = 1;
 	for (int i : listTri) {
 		proiz = proiz * i;
 	}
-	cout << "Êîëè÷åñòâî ÷åòíûõ ÷èñåë: " << listChet.size() << endl;
-	cout << "Ïðîèçâåäåíèå ÷èñåë ñîäåðæàùèõ 3 ðàâíÿåòñÿÿ: " << sqrt(proiz);
-	
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‡ÐµÑ‚Ð½Ñ‹Ñ… Ñ‡Ð¸ÑÐµÐ»: " << listChet.size() << endl;
+	cout << "ÐŸÑ€Ð¾Ð¸Ð·Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ñ‡Ð¸ÑÐµÐ» ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‰Ð¸Ñ… 3 Ñ€Ð°Ð²Ð½ÑÐµÑ‚ÑÑ: " << sqrt(proiz);
 
+	cout << "\nÐžÑ‚Ð½Ð¾ÑˆÐµÐ½Ð¸Ðµ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÐµÐ¹: ";
+	for (int i = 0; i < lenNum; i++) {
+		listFib.pop_front();
+		listFib2.pop_front();
+		float num1 = listFib.front(), num2 = listFib2.front();
+		if (listFib2.front() != 0) {
+			cout << endl << i << ")" << listFib.front() << "/" << listFib2.front() << " = " << num1 / num2;
+		}
+
+	}
+	cin.get();
+	return 0;
 }

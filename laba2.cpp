@@ -5,72 +5,65 @@
 #include <windows.h>
 #include <list>
 #include <math.h>
-
-using namespace std;
 int main() {
+	using namespace std;
 	setlocale(LC_ALL, "RU");
-	float coorX, coorY, radius, radiusVec;
-	int chetvert = 0;
-	cout << "Введите радиус окружности: ";
-	cin >> radius;
-	cout << "\nВведите координату по Х: ";
-	cin >> coorX;
-	cout << "\nВведите координату по У: ";
-	cin >> coorY;
-	radiusVec = sqrt(coorX * coorX + coorY * coorY);
-	float coor[]{ coorX, coorY };
+	int chisloVhod, limitTri, schislen = 10, razryad = 3;
+	int  chisloVih = 0;
+	limitTri = pow(schislen, razryad); // Р’РІРµРґРёС‚Рµ РЅСѓР¶РЅС‹Р№ СЂР°Р·СЂСЏРґ
+	cout << "Р’РІРµРґРёС‚Рµ С‚СЂРµС…Р·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ: ";
+	std::cin >> chisloVhod;
+	if ((abs(chisloVhod) < (schislen * limitTri) and ((abs(chisloVhod) >= (limitTri / schislen))))) {
 
-	if (coorX - abs(coorX)) {
-		chetvert++;
-	}
-	if (coorY - abs(coorY)) {
-		chetvert += 3 - 2 * chetvert;
-	}
+		bool vihZnak = 1;
+		std::list<int> listNums;
+		if (chisloVhod < 0) {
+			chisloVhod = -chisloVhod;
+			vihZnak = 0;
+		}
 
-	
+		while (chisloVhod > 0) {
+			listNums.push_back(chisloVhod % schislen);
+			chisloVhod = chisloVhod / schislen;
+		}
 
-	switch (chetvert) {
-	case 0:
-		if ((coorX == 0) or (coorY == 0)) {
-			cout << "Точка находится на границе";
+		std::cout << "Р’С‹С…РѕРґРЅРѕРµ С‡РёСЃР»Рѕ: ";
+		int size = listNums.size();
+		for (int i = 1; i <= size; i++) {
+			chisloVih += listNums.front() * pow(schislen, (razryad - i));
+
+			listNums.pop_front();
+
+		}
+		if (vihZnak == 0) {
+			chisloVih = -chisloVih;
+			printf_s("%04d", chisloVih);
 		}
 		else {
-			cout << "Точка находится на заштрихованной области";
-		} 
-		break;
-	case 1:
-		if (((coorX == 0) or (coorY == 0)) and (radius >= radiusVec)) {
-			cout << "Точка находится на границе";
+			printf_s("%03d", chisloVih);
 		}
-		else {
-			cout << "Точка вне области";
-		}
-		break;
-	case 2:
-		if ((radius == radiusVec) or (coorX == 0) or (coorY == 0)) {
-			cout << "Точка на границе ";
-		}
-		else if (radius > radiusVec) {
-			cout << "Точка находится на заштрихованной области";
-		}
-		else {
-			cout << "Точка вне области";
-		}
-		break;
-	default:
-		if ((radius == radiusVec) or (coorX == 0) or (coorY == 0)) {
-			cout << "Точка на границе";
-		}
-		else if (radius > radiusVec) {
-			cout << "Точка находится на заштрихованной области";
-		}
-		else {
-			cout << "Точка вне области";
-		}
-		break;
 	}
-	
-		return 0;
-
-
+	else {
+		std::cout << "Р’С‹ РІРІРµР»Рё РЅРµ С‚СЂРµС…Р·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ";
 	}
+	int chislo3, chislo4 = 1, razryadChe = 4, limitChe;
+	std::cout << " \nР’РІРµРґРёС‚Рµ С‡РµС‚С‹СЂРµС…Р·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ: ";
+	std::cin >> chislo3;
+	limitChe = pow(schislen, razryadChe);
+	chislo3 = sqrt(chislo3 * chislo3);
+	if ((chislo3 >= (limitChe / schislen) and (chislo3 < limitChe * schislen))) {
+		std::list<int> listNumss;
+		while (chislo3 > 0) {
+			listNumss.push_back(chislo3 % schislen);
+			chislo3 = chislo3 / schislen;
+		}
+		for (int i : listNumss) {
+			chislo4 = chislo4 * i;
+		}
+		std::cout << "РџСЂРѕРёР·РІРµРґРµРЅРёРµ: " << chislo4;
+	}
+	else {
+		std::cout << "Р’С‹ РІРІРµР»Рё РЅРµ С‡РµС‚С‹СЂРµС…Р·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ";
+	}
+
+}
