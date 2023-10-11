@@ -21,7 +21,7 @@ int fibonach(int lenNum) {
 		return (fibonach(lenNum - 1) + fibonach(lenNum - 2));
 	}
 }
-int fibon(int lenNum) {
+float fibon(int lenNum) {
 	if (lenNum < 0) {
 		return 0;
 
@@ -44,7 +44,7 @@ int main() {
 	std::list<int> listFib;
 	std::list<int> listChet;
 	std::list<int> listTri;
-	std::list<int> listFib2;
+	std::list<float> listFib2;
 	for (int j = 0; j <= lenNum; j++) {
 		listFib.push_back(fibonach(j));
 		listFib2.push_back(fibon(j));
@@ -75,13 +75,15 @@ int main() {
 	cout << "Произведение чисел содержащих 3 равняется: " << sqrt(proiz);
 
 	cout << "\nОтношение последовательностей: ";
+
 	for (int i = 0; i < lenNum; i++) {
-		listFib.pop_front();
-		listFib2.pop_front();
-		float num1 = listFib.front(), num2 = listFib2.front();
+		float num1 = listFib.front();
+		float num2 = listFib2.front();
 		if (listFib2.front() != 0) {
 			cout << endl << i << ")" << listFib.front() << "/" << listFib2.front() << " = " << num1 / num2;
 		}
+		listFib.pop_front();
+		listFib2.pop_front();
 
 	}
 	cin.get();
