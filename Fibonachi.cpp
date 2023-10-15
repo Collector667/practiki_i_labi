@@ -76,7 +76,7 @@ int main() {
 
 	cout << "\nОтношение последовательностей: ";
 
-	for (int i = 0; i < lenNum; i++) {
+	for (int i = 0; i <= lenNum; i++) {
 		float num1 = listFib.front();
 		float num2 = listFib2.front();
 		if (listFib2.front() != 0) {
